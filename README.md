@@ -1,4 +1,12 @@
+Sample Quiz App - built with React, Express, and Bootstrap
+
+to run application:
+
+### 'npm run start'
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+---
 
 ## Available Scripts
 
