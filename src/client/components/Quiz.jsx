@@ -3,7 +3,7 @@ import Question from "./Question";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const Quiz = ({ questions, handleSubmit }) => {
+const Quiz = ({ questions, handleSubmit, handleChange, userAnswers }) => {
   return (
     <main
       style={{
@@ -19,7 +19,8 @@ const Quiz = ({ questions, handleSubmit }) => {
               key={idx}
               number={curr.number}
               question={curr.question}
-              onChange={""}
+              handleChange={handleChange}
+              userAnswers={userAnswers}
             />
           );
         })}

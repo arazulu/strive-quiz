@@ -11,15 +11,22 @@ function App() {
   const [answers, setUserAnswers] = useState([]);
   const [showQuiz, getShowQuiz] = useState(false);
 
-  const handleOnChange = (event) => {
-    console.log("event:", event.target);
+  const onHandleChange = (event) => {
+    let pos = parseInt(event.target.name) - 1;
+    //  need to fix setUserAnswers invocation
+    // setUserAnswers((prevArr) => [
+    //   ...prevArr,
+    //   (prevArr[pos] = event.target.value),
+    // ]);
   };
 
   const startQuiz = () => {
     getShowQuiz(true);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    //send answers array of true/false in req body
+    event.preventDefault();
     fetch("/user", {
       method: "POST",
       headers: {
@@ -36,7 +43,12 @@ function App() {
       {!showQuiz ? (
         ""
       ) : (
-        <Quiz questions={quiz} submit={handleSubmit} userAnswers={answers} />
+        <Quiz
+          questions={quiz}
+          submit={handleSubmit}
+          userAnswers={answers}
+          handleChange={onHandleChange}
+        />
       )}
     </div>
   );
